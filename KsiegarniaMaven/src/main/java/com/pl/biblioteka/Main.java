@@ -61,8 +61,14 @@ public class Main {
 		
 		roku.printEmployee();
 		roku.printCustomerList();
-		
-		
+	//--	
+		CustomerDBManager db= new CustomerDBManager();
+		db.addCustomer(Typek);
+
+		for(Customer customer: db.getAllCustomers())
+		{
+		System.out.println(customer);
+		}
 		
 	}
 }
