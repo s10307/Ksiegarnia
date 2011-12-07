@@ -21,10 +21,12 @@ public class CustomerTest {
 
 	@Before
 	public void setUp() throws Exception {
+		klient.borrowBook(ksiazka);
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		klient.returnBook(ksiazka);
 	}
 
 	@Test
@@ -36,7 +38,7 @@ public class CustomerTest {
 
 	@Test
 	public void testBorrowBook() {
-		klient.borrowBook(ksiazka);
+		
 		assertTrue(bookList.contains(ksiazka));
 	}
 
@@ -53,11 +55,6 @@ public class CustomerTest {
 	}
 
 	@Test
-	public void testRenameAllBooksByNameStringString() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testFindAllBooksByName() {
 		klient.borrowBook(ksiazka);
 		klient.borrowBook(ksiazka);
@@ -65,7 +62,7 @@ public class CustomerTest {
 		klient.renameAllBooksByName(bookList, "nowaNazwa");
 		assertSame("nowaNazwa", ksiazka.getName());
 	}
-
+/*
 	@Test
 	public void testFindAllBooksByAuthor() {
 		klient.borrowBook(ksiazka);
@@ -90,7 +87,7 @@ public class CustomerTest {
 		klient.renameAllBooksByAuthor(bookList, "nowyAutor");
 		assertSame("nowyAutor", ksiazka.getAuthor());
 	}
-
+*/
 	@Test
 	public void testRemoveAllBooksByList() {
 		klient.removeAllBooksByList(bookList);

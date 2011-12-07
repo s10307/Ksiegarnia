@@ -67,7 +67,7 @@ public class Employee {
 	
 	public void renameAllCustomersBySurname(List<Customer> customerList, String newSurname){
 		for(Customer c : customerList){
-			c.setName(newSurname);
+			c.setSurname(newSurname);
 		}
 	}
 	
