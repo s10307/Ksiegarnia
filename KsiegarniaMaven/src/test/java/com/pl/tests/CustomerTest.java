@@ -87,13 +87,13 @@ public class CustomerTest {
 		klient.renameAllBooksByAuthor(bookList, "nowyAutor");
 		assertSame("nowyAutor", ksiazka.getAuthor());
 	}
-*/
+
 	@Test
 	public void testRemoveAllBooksByList() {
 		klient.removeAllBooksByList(bookList);
 		assertNull(klient.hasBook(ksiazka));
 	}
-
+*/
 	@Test
 	public void testGetName() {
 		assertSame("imie", klient.getName());

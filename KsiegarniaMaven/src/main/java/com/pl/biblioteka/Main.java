@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.*;
 
+import com.pl.services.CustomerDBManager;
+
 public class Main {
 	
 	private static Logger myLogger = Logger.getLogger(Main.class);

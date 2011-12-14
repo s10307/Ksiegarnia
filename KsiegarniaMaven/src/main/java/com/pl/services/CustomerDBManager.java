@@ -1,4 +1,4 @@
-package com.pl.biblioteka;
+package com.pl.services;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,6 +8,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+
+import com.pl.biblioteka.Customer;
 
 public class CustomerDBManager {
 
@@ -19,6 +22,9 @@ public class CustomerDBManager {
 
 	private PreparedStatement getCustomersStmt;
 
+	Properties props = new Properties();
+	
+	
 	public CustomerDBManager() {
 		try {
 			conn = DriverManager
