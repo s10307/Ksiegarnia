@@ -1,76 +1,136 @@
 package com.pl.biblioteka;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.log4j.*;
 
+import com.pl.services.Condition;
+import com.pl.services.BookDBManager;
 import com.pl.services.CustomerDBManager;
+import com.pl.services.BookCustomerDBManager;
+import java.util.*;
 
 public class Main {
-	
-	private static Logger myLogger = Logger.getLogger(Main.class);
-	
-	public static void main(String[] args){
-	
-		PropertyConfigurator.configure("Log4j.properties");
-		
-		Clock WallClock = new Clock();
-		WallClock.showTime();
-		try {
-			WallClock.setTime(24, 50);
-			WallClock.setTime(26, 70);
-		} catch (ImpossibleHourException e) {
-			System.out.println(e);
-		}
-		WallClock.showTime();
-	
-		Book Awatar = new Book(BookRepo.Awatar, Authors.M_Flitwichky);
-		Book Bullocks = new Book(BookRepo.Bullocks, Authors.O_Scott_Card);
-		Book Djuna = new Book(BookRepo.Djuna, Authors.O_Scott_Card);
-		Book Faraon = new Book(BookRepo.Faraon, Authors.H_Sienkiewicz);
-		Book Kiszyniov = new Book(BookRepo.Kiszyniov, Authors.A_Brezniev);
-		
-		Book Nowa = new Book(BookRepo.W_pustyni_i_gluszy, Authors.H_Sienkiewicz);
-		
-		List<Book> listaKsiazek1 = new ArrayList<Book>();
-		listaKsiazek1.add(Awatar);
-		listaKsiazek1.add(Bullocks);
-		listaKsiazek1.add(Djuna);
-		List<Book> listaKsiazek2 = new ArrayList<Book>();
-		listaKsiazek2.add(Faraon);
-		listaKsiazek2.add(Kiszyniov);
-		
-		
-		
-		
-		Customer Typek = new Customer("Jakis", "Typek", listaKsiazek1);
-		Customer Koleszka = new Customer("Inny", "Koleszka", listaKsiazek2);
-		
-		List<Customer> listaKlientow = new ArrayList<Customer>();
-		listaKlientow.add(Typek);
-		listaKlientow.add(Koleszka);
-		
-		
-		
-		Employee roku = new Employee("Pan", "Wladek", listaKlientow);
-		roku.printEmployee();
-		roku.printCustomerList();
-		
-		Typek.borrowBook(Nowa);
-		Koleszka.returnBook(Faraon);
-		Koleszka.returnBook(Kiszyniov);
-		Koleszka.borrowBook(Nowa);
-		
-		roku.printEmployee();
-		roku.printCustomerList();
-	//--	
-		CustomerDBManager db= new CustomerDBManager();
-		db.addCustomer(Typek);
 
-		for(Customer customer: db.getAllCustomers())
-		{
-		System.out.println(customer);
+	private static Logger logger = Logger.getLogger(Main.class);
+
+	public void cleanDB(BookDBManager BookMng, CustomerDBManager CustMng,
+			BookCustomerDBManager LnkdMng) {
+		BookMng.deleteAllBooks();
+		CustMng.deleteAllCustomers();
+		LnkdMng.deleteAllLendings();
+	}
+
+	public static void main(String[] args) {
+
+		PropertyConfigurator.configure("src/resources/java/Log4J.properties");
+
+		Clock zegar = new Clock(12, 0);
+
+		Customer Typek = new Customer("Jakis", "Typek");
+		Customer Typeczek = new Customer("Inny", "Typek");
+
+		List<Customer> CustomerList = new ArrayList<Customer>();
+		CustomerList.add(Typek);
+		CustomerList.add(Typeczek);
+
+		Book Biblia = new Book("Nowy Testament", "God");
+		Book Elementarz = new Book("Elementarz", "Pan Obok");
+		Book Podrecznik = new Book("Do Matematyki", "Soviet");
+		List<Book> BookList = new ArrayList<Book>();
+		BookList.add(Podrecznik);
+		BookList.add(Elementarz);
+		BookList.add(Biblia);
+
+		Typek.borrowBook(Biblia);
+		Typek.borrowBook(Elementarz);
+		Typek.printBookList();
+
+		try {
+			zegar.setTime(26, 00);
+			zegar.showTime();
+		} catch (ImpossibleHourException exc) {
+			logger.error(exc);
 		}
+
+		// ----------------------------------------------------------------------------------------------------
+
+		CustomerDBManager CustomerManager = new CustomerDBManager();
+
+		CustomerManager.addCustomer(Typek);
+		CustomerManager.addCustomer(Typeczek);
+		for (Customer customer : CustomerManager.getAllCustomers()) {
+			System.out.println(customer.getName());
+		}
+		/*
+		 * !USUWANIE!
+		 * CustomerManager.deleteCustomer(CustomerManager.findCustomerByName
+		 * ("Inny")); for (Customer Customer :
+		 * CustomerManager.getAllCustomers()) {
+		 * System.out.println(customer.getName()); }
+		 */
+
+		BookDBManager BookManager = new BookDBManager();
+
+		BookManager.addBook(Biblia);
+		BookManager.addBook(Elementarz);
+		BookManager.addBook(Podrecznik);
+		for (Book book : BookManager.getAllBooks()) {
+			System.out.println("Name: " + book.getName() + "\nAuthor: "
+					+ book.getAuthor());
+		}
+		/*
+		 * !USUWANIE!
+		 * BookManager.deleteBook(BookManager.findBookByName("Elementarz")); for
+		 * (Book book : BookManager.getAllBooks()) { System.out.println("Name: "
+		 * + book.getName() + "\nAuthor: " + book.getAuthor()); }
+		 */
 		
+		// ----------------------------------------------------------------------------------------------------
+		
+		BookCustomerDBManager LinkedManager = new BookCustomerDBManager();
+
+		LinkedManager.LendBookToCustomer(
+				CustomerManager.findCustomerByName("Jakis"),
+				BookManager.findBookByName("Elementarz"));
+		LinkedManager.LendBookToCustomer(
+				CustomerManager.findCustomerBySurname("Typek"),
+				BookManager.findBookByName("Podrecznik"));
+
+		for (Book book : LinkedManager.getCustomerBook(CustomerManager
+				.findCustomerByName("Jakis"))) {
+			System.out.println("Name: " + book.getName() + "\nAuthor: "
+					+ book.getAuthor());
+		}
+
+		// warunki do klas anonimowych
+
+		BookManager.printBookWithCondition(BookManager.getAllBooks(),
+				new Condition() {
+					@Override
+					public boolean getCondition(Book book) {
+						if (book.getName().length() > 35)
+							return true;
+						return false;
+					}
+
+					@Override
+					public boolean getCondition(Customer customer) {
+						return false;
+					}
+				});
+		
+		CustomerManager.printCustomerWithCondition(CustomerManager.getAllCustomers(),
+				new Condition() {
+					@Override
+					public boolean getCondition(Book book) {
+						return false;
+					}
+
+					@Override
+					public boolean getCondition(Customer customer) {
+						if (customer.getName().length() > 4)
+							return true;
+						return false;
+					}
+				});
 	}
 }

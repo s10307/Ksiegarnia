@@ -123,7 +123,7 @@ public class CustomerDBManager {
 		return null;
 	}
 
-	public List<Integer> findCustomerBySurame(String surname) {
+	public List<Integer> findCustomerBySurname(String surname) {
 		try {
 			List<Integer> result = new ArrayList<Integer>();
 			findCustomerBySurnameStmt.setString(1, surname);
