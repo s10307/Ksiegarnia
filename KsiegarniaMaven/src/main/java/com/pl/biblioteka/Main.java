@@ -10,14 +10,14 @@ import java.util.*;
 
 public class Main {
 
-	private static Logger logger = Logger.getLogger(Main.class);
-
-	public void cleanDB(BookDBManager BookMng, CustomerDBManager CustMng,
-			BookCustomerDBManager LnkdMng) {
+	public static void cleanDB(BookDBManager BookMng,
+			CustomerDBManager CustMng, BookCustomerDBManager LnkdMng) {
 		BookMng.deleteAllBooks();
 		CustMng.deleteAllCustomers();
 		LnkdMng.deleteAllLendings();
 	}
+
+	private static Logger logger = Logger.getLogger(Main.class);
 
 	public static void main(String[] args) {
 
@@ -39,12 +39,15 @@ public class Main {
 		BookList.add(Podrecznik);
 		BookList.add(Elementarz);
 		BookList.add(Biblia);
-
+		// ----WTF?!?!
 		System.out.println(Biblia.getName());
+		System.out.println(Typek.getName());
+		Typek.getBookList().contains(Podrecznik);
+		Typek.getBookList().add(Biblia);
 		Typek.borrowBook(Biblia);
 		Typek.borrowBook(Elementarz);
 		Typek.printBookList();
-
+		// ----WTF?!?!?
 		try {
 			zegar.setTime(26, 00);
 			zegar.showTime();
@@ -84,9 +87,9 @@ public class Main {
 		 * (Book book : BookManager.getAllBooks()) { System.out.println("Name: "
 		 * + book.getName() + "\nAuthor: " + book.getAuthor()); }
 		 */
-		
+
 		// ----------------------------------------------------------------------------------------------------
-		
+
 		BookCustomerDBManager LinkedManager = new BookCustomerDBManager();
 
 		LinkedManager.LendBookToCustomer(
@@ -102,7 +105,7 @@ public class Main {
 					+ book.getAuthor());
 		}
 
-		//-warunki-do-klas-anonimowych-------------------------------------------------------------------------
+		// -warunki-do-klas-anonimowych-------------------------------------------------------------------------
 
 		BookManager.printBookWithCondition(BookManager.getAllBooks(),
 				new Condition() {
@@ -118,9 +121,9 @@ public class Main {
 						return false;
 					}
 				});
-		
-		CustomerManager.printCustomerWithCondition(CustomerManager.getAllCustomers(),
-				new Condition() {
+
+		CustomerManager.printCustomerWithCondition(
+				CustomerManager.getAllCustomers(), new Condition() {
 					@Override
 					public boolean getCondition(Book book) {
 						return false;
@@ -133,5 +136,6 @@ public class Main {
 						return false;
 					}
 				});
+		cleanDB(BookManager, CustomerManager, LinkedManager);
 	}
 }
