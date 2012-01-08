@@ -40,6 +40,7 @@ public class Main {
 		BookList.add(Elementarz);
 		BookList.add(Biblia);
 
+		System.out.println(Biblia.getName());
 		Typek.borrowBook(Biblia);
 		Typek.borrowBook(Elementarz);
 		Typek.printBookList();
@@ -101,7 +102,7 @@ public class Main {
 					+ book.getAuthor());
 		}
 
-		// warunki do klas anonimowych
+		//-warunki-do-klas-anonimowych-------------------------------------------------------------------------
 
 		BookManager.printBookWithCondition(BookManager.getAllBooks(),
 				new Condition() {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.01" errors="0" skipped="0" tests="1" name="com.pl.tests.ClockTest">
+<testsuite failures="0" time="0.002" errors="0" skipped="0" tests="1" name="com.pl.tests.ClockTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jre6\bin"/>
@@ -19,7 +19,7 @@
     <property name="basedir" value="C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jre6\lib\endorsed"/>
     <property name="os.arch" value="amd64"/>
-    <property name="surefire.real.class.path" value="C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven\target\surefire\surefirebooter265471106257338228.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven\target\surefire\surefirebooter7792679129014452926.jar"/>
     <property name="java.io.tmpdir" value="C:\Users\Bedias\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
@@ -43,7 +43,7 @@
     <property name="java.vm.specification.version" value="1.0"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jre6"/>
-    <property name="sun.java.command" value="C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven\target\surefire\surefirebooter265471106257338228.jar C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven\target\surefire\surefire6502077766111721574tmp C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven\target\surefire\surefire1355877215741193216tmp"/>
+    <property name="sun.java.command" value="C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven\target\surefire\surefirebooter7792679129014452926.jar C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven\target\surefire\surefire3423475696055645024tmp C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven\target\surefire\surefire6897236702134435320tmp"/>
     <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="user.language" value="pl"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
