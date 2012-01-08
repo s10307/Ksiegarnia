@@ -12,6 +12,12 @@ public class Customer {
 	String surname;
 	List<Book> BookList;
 
+	public Customer(String name, String surname) {
+		this.name = name;
+		this.surname = surname;
+		this.BookList = null;
+	}
+	
 	public Customer(String name, String surname, List<Book> BookList) {
 		this.name = name;
 		this.surname = surname;
