@@ -2,26 +2,24 @@ package com.pl.biblioteka;
 
 import org.apache.log4j.*;
 
-import com.pl.services.Condition;
-import com.pl.services.BookDBManager;
-import com.pl.services.CustomerDBManager;
-import com.pl.services.BookCustomerDBManager;
+import com.pl.services.*;
 import java.util.*;
 
 public class Main {
 
 	public static void cleanDB(BookDBManager BookMng,
 			CustomerDBManager CustMng, BookCustomerDBManager LnkdMng) {
+		LnkdMng.deleteAllLendings();
 		BookMng.deleteAllBooks();
 		CustMng.deleteAllCustomers();
-		LnkdMng.deleteAllLendings();
 	}
 
 	private static Logger logger = Logger.getLogger(Main.class);
 
 	public static void main(String[] args) {
 
-		PropertyConfigurator.configure("src/resources/java/Log4J.properties");
+		PropertyConfigurator
+				.configure("src/resources/java/com/pl/reso/Log4j.properties");
 
 		Clock zegar = new Clock(12, 0);
 
@@ -39,15 +37,7 @@ public class Main {
 		BookList.add(Podrecznik);
 		BookList.add(Elementarz);
 		BookList.add(Biblia);
-		// ----WTF?!?!
-		System.out.println(Biblia.getName());
-		System.out.println(Typek.getName());
-		Typek.getBookList().contains(Podrecznik);
-		Typek.getBookList().add(Biblia);
-		Typek.borrowBook(Biblia);
-		Typek.borrowBook(Elementarz);
-		Typek.printBookList();
-		// ----WTF?!?!?
+
 		try {
 			zegar.setTime(26, 00);
 			zegar.showTime();
@@ -61,8 +51,10 @@ public class Main {
 
 		CustomerManager.addCustomer(Typek);
 		CustomerManager.addCustomer(Typeczek);
+		System.out.println("Wszystkie Typki:");
 		for (Customer customer : CustomerManager.getAllCustomers()) {
-			System.out.println(customer.getName());
+			System.out.println("Name= " + customer.getName());
+			System.out.println("Surname= " + customer.getSurname());
 		}
 		/*
 		 * !USUWANIE!
@@ -77,6 +69,7 @@ public class Main {
 		BookManager.addBook(Biblia);
 		BookManager.addBook(Elementarz);
 		BookManager.addBook(Podrecznik);
+		System.out.println("Wszystkie Ksiazki:");
 		for (Book book : BookManager.getAllBooks()) {
 			System.out.println("Name: " + book.getName() + "\nAuthor: "
 					+ book.getAuthor());
@@ -91,14 +84,18 @@ public class Main {
 		// ----------------------------------------------------------------------------------------------------
 
 		BookCustomerDBManager LinkedManager = new BookCustomerDBManager();
-
-		LinkedManager.LendBookToCustomer(
-				CustomerManager.findCustomerByName("Jakis"),
-				BookManager.findBookByName("Elementarz"));
-		LinkedManager.LendBookToCustomer(
-				CustomerManager.findCustomerBySurname("Typek"),
-				BookManager.findBookByName("Podrecznik"));
-
+		List<Integer> CustomerID = CustomerManager.findCustomerByName("Jakis");
+		List<Integer> BookID = BookManager.findBookByName("Elementarz");
+		
+		for(Integer ID : CustomerID ){
+			System.out.println("Customer: " + ID);
+		}
+		for(Integer ID : BookID ){
+			System.out.println("Book: " + ID);
+		}
+		
+		LinkedManager.LendBookToCustomer(CustomerID, BookID);
+		
 		for (Book book : LinkedManager.getCustomerBook(CustomerManager
 				.findCustomerByName("Jakis"))) {
 			System.out.println("Name: " + book.getName() + "\nAuthor: "
@@ -106,12 +103,12 @@ public class Main {
 		}
 
 		// -warunki-do-klas-anonimowych-------------------------------------------------------------------------
-
+		System.out.println("Tytul dluzszy niz 25 znakow");
 		BookManager.printBookWithCondition(BookManager.getAllBooks(),
 				new Condition() {
 					@Override
 					public boolean getCondition(Book book) {
-						if (book.getName().length() > 35)
+						if (book.getName().length() > 25)
 							return true;
 						return false;
 					}
@@ -121,7 +118,7 @@ public class Main {
 						return false;
 					}
 				});
-
+		System.out.println("Imie dluzsze niz 4 znaki");
 		CustomerManager.printCustomerWithCondition(
 				CustomerManager.getAllCustomers(), new Condition() {
 					@Override
@@ -136,6 +133,6 @@ public class Main {
 						return false;
 					}
 				});
-		cleanDB(BookManager, CustomerManager, LinkedManager);
+		//cleanDB(BookManager, CustomerManager, LinkedManager);
 	}
 }

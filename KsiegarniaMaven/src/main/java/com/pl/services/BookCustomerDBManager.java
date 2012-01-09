@@ -21,7 +21,7 @@ public class BookCustomerDBManager {
 
 			try {
 				props.load(ClassLoader
-						.getSystemResourceAsStream("com.pl/jdbs.properties"));
+						.getSystemResourceAsStream("com/pl/reso/jdbc.properties"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -41,9 +41,8 @@ public class BookCustomerDBManager {
 			}
 
 			if (!CustomerBookTableExists) {
-				stmt.executeUpdate("CREATE TABLE CustomerBook(customer_id int, book_id int,"
-						+ " CONSTRAINT customer_id_fk FOREIGN KEY (customer_id) REFERENCES customer (id),"
-						+ " CONSTRAINT book_id_fk FOREIGN KEY (book_id) REFERENCES book (id))");
+				stmt.executeUpdate("CREATE TABLE CustomerBook(customer_id bigint, book_id bigint, CONSTRAINT customer_id_fk FOREIGN KEY (customer_id) REFERENCES customer (id),"
+						+ " CONSTRAINT book_id_fk FOREIGN KEY (book_id) REFERENCES books (id))");
 			}
 
 			LendBookToCustomerStmt = conn
@@ -56,8 +55,8 @@ public class BookCustomerDBManager {
 					.prepareStatement("DELETE FROM CustomerBook");
 
 			getCustomerBookStmt = conn
-					.prepareStatement("SELECT book.name, book.author FROM book,"
-							+ " CustomerBook WHERE customer_id = ? and book_id = book.id");
+					.prepareStatement("SELECT books.name, books.author FROM books,"
+							+ " CustomerBook WHERE customer_id = ? and book_id = books.id");
 
 		} catch (SQLException e) {
 
@@ -75,6 +74,18 @@ public class BookCustomerDBManager {
 					LendBookToCustomerStmt.executeUpdate();
 				}
 			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+
+	public void LendBookToCustomerV2(Integer customerID, Integer bookID) {
+		try {
+			LendBookToCustomerStmt.setInt(1, customerID);
+			LendBookToCustomerStmt.setInt(2, bookID);
+			LendBookToCustomerStmt.executeUpdate();
 		} catch (SQLException e) {
 
 			e.printStackTrace();

@@ -25,7 +25,7 @@ public class CustomerDBManager {
 
 			try {
 				props.load(ClassLoader
-						.getSystemResourceAsStream("com.pl/jdbs.properties"));
+						.getSystemResourceAsStream("com/pl/reso/jdbc.properties"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -75,6 +75,7 @@ public class CustomerDBManager {
 	public void addCustomer(Customer customer) {
 		try {
 			addCustomerStmt.setString(1, customer.getName());
+			addCustomerStmt.setString(2, customer.getSurname());
 			addCustomerStmt.executeUpdate();
 		} catch (SQLException e) {
 

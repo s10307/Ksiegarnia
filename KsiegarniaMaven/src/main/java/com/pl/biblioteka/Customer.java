@@ -15,7 +15,7 @@ public class Customer {
 	public Customer(String name, String surname) {
 		this.name = name;
 		this.surname = surname;
-		this.BookList = null;
+		this.BookList = new ArrayList<Book>();
 	}
 	
 	public Customer(String name, String surname, List<Book> BookList) {
