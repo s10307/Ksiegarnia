@@ -1,69 +1,72 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.005" errors="0" skipped="0" tests="9" name="com.pl.tests.CustomerTest">
+<testsuite failures="0" time="0.031" errors="0" skipped="0" tests="9" name="com.pl.tests.CustomerTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="sun.boot.library.path" value="/opt/devel/jdk1.6.0_27/jre/lib/i386"/>
-    <property name="java.vm.version" value="20.2-b06"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jre6\bin"/>
+    <property name="java.vm.version" value="20.0-b11"/>
     <property name="java.vm.vendor" value="Sun Microsystems Inc."/>
     <property name="java.vendor.url" value="http://java.sun.com/"/>
-    <property name="path.separator" value=":"/>
-    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
     <property name="user.country" value="PL"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/student/git/KsiegarniaMaven/KsiegarniaMaven"/>
-    <property name="java.runtime.version" value="1.6.0_27-b07"/>
-    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="basedir" value="/home/student/git/KsiegarniaMaven/KsiegarniaMaven"/>
-    <property name="java.endorsed.dirs" value="/opt/devel/jdk1.6.0_27/jre/lib/endorsed"/>
-    <property name="os.arch" value="i386"/>
-    <property name="surefire.real.class.path" value="/home/student/git/KsiegarniaMaven/KsiegarniaMaven/target/surefire/surefirebooter3518728488294429046.jar"/>
-    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="user.dir" value="C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven"/>
+    <property name="java.runtime.version" value="1.6.0_25-b06"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="basedir" value="C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jre6\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="surefire.real.class.path" value="C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven\target\surefire\surefirebooter7424170967374439729.jar"/>
+    <property name="java.io.tmpdir" value="C:\Users\Bedias\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
     <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
-    <property name="os.name" value="Linux"/>
-    <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.library.path" value="/opt/devel/jdk1.6.0_27/jre/lib/i386/client:/opt/devel/jdk1.6.0_27/jre/lib/i386:/opt/devel/jdk1.6.0_27/jre/../lib/i386:/opt/devel/jdk1.6.0_27/jre/lib/i386/client:/opt/devel/jdk1.6.0_27/jre/lib/i386::/usr/java/packages/lib/i386:/lib:/usr/lib"/>
-    <property name="surefire.test.class.path" value="/home/student/git/KsiegarniaMaven/KsiegarniaMaven/target/test-classes:/home/student/git/KsiegarniaMaven/KsiegarniaMaven/target/classes:/opt/devel/maven_repo/junit/junit/4.10/junit-4.10.jar:/opt/devel/maven_repo/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar:/opt/devel/maven_repo/log4j/log4j/1.2.16/log4j-1.2.16.jar:/opt/devel/maven_repo/org/hsqldb/hsqldb/2.2.4/hsqldb-2.2.4.jar:"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="sun.jnu.encoding" value="Cp1250"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jre6\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;c:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files\Common Files\Microsoft Shared\Windows Live"/>
+    <property name="surefire.test.class.path" value="C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven\target\test-classes;C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven\target\classes;C:\Users\Bedias\.m2\repository\junit\junit\4.10\junit-4.10.jar;C:\Users\Bedias\.m2\repository\org\hamcrest\hamcrest-core\1.1\hamcrest-core-1.1.jar;C:\Users\Bedias\.m2\repository\log4j\log4j\1.2.16\log4j-1.2.16.jar;C:\Users\Bedias\.m2\repository\org\hsqldb\hsqldb\2.2.4\hsqldb-2.2.4.jar;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="50.0"/>
-    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
-    <property name="os.version" value="2.6.38-11-generic"/>
-    <property name="user.home" value="/home/student"/>
-    <property name="user.timezone" value="Europe/Warsaw"/>
-    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
-    <property name="file.encoding" value="UTF-8"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="C:\Users\Bedias"/>
+    <property name="user.timezone" value="Europe/Belgrade"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="java.specification.version" value="1.6"/>
-    <property name="user.name" value="student"/>
-    <property name="java.class.path" value="/home/student/git/KsiegarniaMaven/KsiegarniaMaven/target/test-classes:/home/student/git/KsiegarniaMaven/KsiegarniaMaven/target/classes:/opt/devel/maven_repo/junit/junit/4.10/junit-4.10.jar:/opt/devel/maven_repo/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar:/opt/devel/maven_repo/log4j/log4j/1.2.16/log4j-1.2.16.jar:/opt/devel/maven_repo/org/hsqldb/hsqldb/2.2.4/hsqldb-2.2.4.jar:"/>
+    <property name="file.encoding" value="Cp1250"/>
+    <property name="user.name" value="Bedias"/>
+    <property name="java.class.path" value="C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven\target\test-classes;C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven\target\classes;C:\Users\Bedias\.m2\repository\junit\junit\4.10\junit-4.10.jar;C:\Users\Bedias\.m2\repository\org\hamcrest\hamcrest-core\1.1\hamcrest-core-1.1.jar;C:\Users\Bedias\.m2\repository\log4j\log4j\1.2.16\log4j-1.2.16.jar;C:\Users\Bedias\.m2\repository\org\hsqldb\hsqldb\2.2.4\hsqldb-2.2.4.jar;"/>
     <property name="java.vm.specification.version" value="1.0"/>
-    <property name="sun.arch.data.model" value="32"/>
-    <property name="java.home" value="/opt/devel/jdk1.6.0_27/jre"/>
-    <property name="sun.java.command" value="/home/student/git/KsiegarniaMaven/KsiegarniaMaven/target/surefire/surefirebooter3518728488294429046.jar /home/student/git/KsiegarniaMaven/KsiegarniaMaven/target/surefire/surefire8946296663466368544tmp /home/student/git/KsiegarniaMaven/KsiegarniaMaven/target/surefire/surefire9205161059532415437tmp"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="C:\Program Files\Java\jre6"/>
+    <property name="sun.java.command" value="C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven\target\surefire\surefirebooter7424170967374439729.jar C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven\target\surefire\surefire4945589518079788724tmp C:\Users\Bedias\git\KsiegarniaMaven\KsiegarniaMaven\target\surefire\surefire3265478881241827217tmp"/>
     <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="user.language" value="pl"/>
-    <property name="java.vm.info" value="mixed mode, sharing"/>
-    <property name="java.version" value="1.6.0_27"/>
-    <property name="java.ext.dirs" value="/opt/devel/jdk1.6.0_27/jre/lib/ext:/usr/java/packages/lib/ext"/>
-    <property name="sun.boot.class.path" value="/opt/devel/jdk1.6.0_27/jre/lib/resources.jar:/opt/devel/jdk1.6.0_27/jre/lib/rt.jar:/opt/devel/jdk1.6.0_27/jre/lib/sunrsasign.jar:/opt/devel/jdk1.6.0_27/jre/lib/jsse.jar:/opt/devel/jdk1.6.0_27/jre/lib/jce.jar:/opt/devel/jdk1.6.0_27/jre/lib/charsets.jar:/opt/devel/jdk1.6.0_27/jre/lib/modules/jdk.boot.jar:/opt/devel/jdk1.6.0_27/jre/classes"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.6.0_25"/>
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jre6\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jre6\lib\resources.jar;C:\Program Files\Java\jre6\lib\rt.jar;C:\Program Files\Java\jre6\lib\sunrsasign.jar;C:\Program Files\Java\jre6\lib\jsse.jar;C:\Program Files\Java\jre6\lib\jce.jar;C:\Program Files\Java\jre6\lib\charsets.jar;C:\Program Files\Java\jre6\lib\modules\jdk.boot.jar;C:\Program Files\Java\jre6\classes"/>
     <property name="java.vendor" value="Sun Microsystems Inc."/>
-    <property name="localRepository" value="/opt/devel/maven_repo"/>
-    <property name="file.separator" value="/"/>
+    <property name="localRepository" value="C:\Users\Bedias\.m2\repository"/>
+    <property name="file.separator" value="\"/>
     <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
-    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0.002" classname="com.pl.tests.CustomerTest" name="testCustomer"/>
+  <testcase time="0.01" classname="com.pl.tests.CustomerTest" name="testGetName"/>
+  <testcase time="0" classname="com.pl.tests.CustomerTest" name="testSetName"/>
+  <testcase time="0" classname="com.pl.tests.CustomerTest" name="testCustomer"/>
   <testcase time="0" classname="com.pl.tests.CustomerTest" name="testBorrowBook"/>
   <testcase time="0" classname="com.pl.tests.CustomerTest" name="testReturnBook"/>
   <testcase time="0" classname="com.pl.tests.CustomerTest" name="testHasBook"/>
   <testcase time="0" classname="com.pl.tests.CustomerTest" name="testFindAllBooksByName"/>
-  <testcase time="0" classname="com.pl.tests.CustomerTest" name="testGetName"/>
-  <testcase time="0" classname="com.pl.tests.CustomerTest" name="testSetName"/>
   <testcase time="0" classname="com.pl.tests.CustomerTest" name="testGetSurname"/>
   <testcase time="0" classname="com.pl.tests.CustomerTest" name="testSetSurname"/>
 </testsuite>

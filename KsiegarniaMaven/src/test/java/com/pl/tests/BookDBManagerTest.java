@@ -29,38 +29,40 @@ public class BookDBManagerTest {
 
 	@Test
 	public void testAddBook() {
-		assertNotNull(BookManager.findBookByName("Tytul"));
+		BookManager.addBook(new Book("Autor_Tytulu","Tytuł_Autora"));
+		assertEquals(2, BookManager.getAllBooks().size());
 	}
 
 	@Test
 	public void testGetAllBooks() {
-		assertNotNull(BookManager.getAllBooks());
+		assertEquals(1, BookManager.getAllBooks().size());
 	}
 
 	@Test
 	public void testDeleteAllBooks() {
 		BookManager.deleteAllBooks();
-		assertNull(BookManager.getAllBooks());
+		assertTrue(BookManager.getAllBooks().isEmpty());
 	}
 
 	@Test
 	public void testFindBookByName() {
-		fail("Not yet implemented");
+		BookManager.addBook(new Book("Tytul","Autor2"));
+		assertEquals(2, BookManager.findBookByName("Tytul").size());
 	}
 
 	@Test
 	public void testFindBookByAuthor() {
-		fail("Not yet implemented");
+		BookManager.addBook(new Book("Tytul2","Autor"));
+		BookManager.addBook(new Book("Tytul2","Autor2"));
+		assertEquals(2, BookManager.findBookByName("Autor").size());
 	}
 
 	@Test
 	public void testDeleteBook() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testPrintBookWithCondition() {
-		fail("Not yet implemented");
+		BookManager.addBook(new Book("Tytul2","Autor"));
+		BookManager.addBook(new Book("Tytul2","Autor2"));
+		BookManager.deleteBook(BookManager.findBookByName("Tytul"));
+		assertEquals(2, BookManager.getAllBooks().size());
 	}
 
 }

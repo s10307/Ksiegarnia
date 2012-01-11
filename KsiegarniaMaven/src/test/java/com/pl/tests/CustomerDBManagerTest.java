@@ -6,6 +6,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.pl.biblioteka.Book;
+import com.pl.biblioteka.Customer;
 import com.pl.services.CustomerDBManager;
 
 public class CustomerDBManagerTest {
@@ -13,50 +15,50 @@ public class CustomerDBManagerTest {
 	CustomerDBManager CustomerManager = new CustomerDBManager();
 	@Before
 	public void setUp() throws Exception {
+		CustomerManager.addCustomer(new Customer("Imie", "Nazwisko"));
 	}
 
 	@After
 	public void tearDown() throws Exception {
-	}
-
-	@Test
-	public void testCustomerDBManager() {
-		fail("Not yet implemented");
+		CustomerManager.deleteAllCustomers();
 	}
 
 	@Test
 	public void testAddCustomer() {
-		fail("Not yet implemented");
+		CustomerManager.addCustomer(new Customer("Imie2","Nazwisko2"));
+		assertEquals(2, CustomerManager.getAllCustomers().size());
 	}
 
 	@Test
 	public void testGetAllCustomers() {
-		fail("Not yet implemented");
+		assertEquals(1, CustomerManager.getAllCustomers().size());
 	}
 
 	@Test
 	public void testDeleteAllCustomers() {
-		fail("Not yet implemented");
+		CustomerManager.deleteAllCustomers();
+		assertTrue(CustomerManager.getAllCustomers().isEmpty());
 	}
 
 	@Test
 	public void testFindCustomerByName() {
-		fail("Not yet implemented");
+		CustomerManager.addCustomer(new Customer("Imie","Nazwisko2"));
+		assertEquals(2, CustomerManager.findCustomerByName("Imie").size());
 	}
 
 	@Test
 	public void testFindCustomerBySurname() {
-		fail("Not yet implemented");
+		CustomerManager.addCustomer(new Customer("Imie2","Nazwisko"));
+		CustomerManager.addCustomer(new Customer("Imie2","Nazwisko2"));
+		assertEquals(2, CustomerManager.findCustomerByName("Nazwisko").size());
 	}
 
 	@Test
 	public void testDeleteCustomer() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testPrintCustomerWithCondition() {
-		fail("Not yet implemented");
+		CustomerManager.addCustomer(new Customer("Imie2","Nazwisko"));
+		CustomerManager.addCustomer(new Customer("Imie2","Nazwisko2"));
+		CustomerManager.deleteCustomer(CustomerManager.findCustomerByName("Imie"));
+		assertEquals(2, CustomerManager.getAllCustomers().size());
 	}
 
 }
