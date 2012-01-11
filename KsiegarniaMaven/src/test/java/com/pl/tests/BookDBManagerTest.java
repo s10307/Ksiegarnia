@@ -54,7 +54,7 @@ public class BookDBManagerTest {
 	public void testFindBookByAuthor() {
 		BookManager.addBook(new Book("Tytul2","Autor"));
 		BookManager.addBook(new Book("Tytul2","Autor2"));
-		assertEquals(2, BookManager.findBookByName("Autor").size());
+		assertEquals(2, BookManager.findBookByAuthor("Autor").size());
 	}
 
 	@Test

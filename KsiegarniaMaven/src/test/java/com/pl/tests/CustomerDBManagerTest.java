@@ -50,7 +50,7 @@ public class CustomerDBManagerTest {
 	public void testFindCustomerBySurname() {
 		CustomerManager.addCustomer(new Customer("Imie2","Nazwisko"));
 		CustomerManager.addCustomer(new Customer("Imie2","Nazwisko2"));
-		assertEquals(2, CustomerManager.findCustomerByName("Nazwisko").size());
+		assertEquals(2, CustomerManager.findCustomerBySurname("Nazwisko").size());
 	}
 
 	@Test

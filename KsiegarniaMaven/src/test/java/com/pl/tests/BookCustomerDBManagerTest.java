@@ -42,7 +42,7 @@ public class BookCustomerDBManagerTest {
 	public void testLendBookToCustomer() {
 		BookManager.addBook(new Book("Tytul4","Autor1"));
 		LinkedManager.LendBookToCustomer(CustomerManager.findCustomerByName("Imie1"), BookManager.findBookByName("Tytul4"));
-		assertEquals(3, LinkedManager.getCustomerBook(CustomerManager.findCustomerByName("Imie1")));
+		assertEquals(3, LinkedManager.getCustomerBook(CustomerManager.findCustomerByName("Imie1")).size());
 	}
 
 	@Test
